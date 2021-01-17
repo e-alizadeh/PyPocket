@@ -33,8 +33,5 @@ docs/_build/
 __pypackages__/
 
 # Environments
-.env
-.venv
-env/
-venv/
+*.env
 
