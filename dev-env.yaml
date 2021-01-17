@@ -1,0 +1,8 @@
+name: pypocket
+
+channels:
+  - conda-forge
+  - default
+
+dependencies:
+  - python=3.8
