@@ -28,13 +28,22 @@ class Pocket(object):
         self._access_token = access_token
         self.pocket_endpoints = PocketAPI
 
-    def retrieve(self):
+    def retrieve(self, num_post: int = 5):
+        """Retrieve saved articles
+
+        Args:
+            num_post (int):
+
+        Returns:
+            Dict
+
+        """
         result = requests.get(
             url=self.pocket_endpoints.get,
             params={
                 "consumer_key": self._consumer_key,
                 "access_token": self._access_token,
-                "count": "5",
+                "count": str(num_post),
                 "detailType": "complete",
             },
         )
