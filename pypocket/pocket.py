@@ -4,6 +4,8 @@ from typing import List
 
 import requests
 
+from pypocket.utils import convert_epoch_to_datetime
+
 
 @dataclass
 class PocketAPI:
@@ -16,10 +18,12 @@ class PocketAPI:
 class PocketArticle:
     """Class for official GetPocket API endpoints"""
 
+    item_id: int
     title: str
     url: str
     tags: List[str]
-    timestamp: datetime
+    time_added: datetime
+    time_updated: datetime
 
 
 class Pocket(object):
@@ -28,7 +32,18 @@ class Pocket(object):
         self._access_token = access_token
         self.pocket_endpoints = PocketAPI
 
-    def retrieve(self, num_post: int = 5):
+    @staticmethod
+    def _reformat_items(item):
+        return PocketArticle(
+            item_id=int(item["item_id"]),
+            title=item["resolved_title"],
+            url=item["resolved_url"],
+            tags=[],
+            time_added=convert_epoch_to_datetime(int(item["time_added"])),
+            time_updated=convert_epoch_to_datetime(int(item["time_updated"])),
+        )
+
+    def retrieve(self, num_post: int = 5) -> List[PocketArticle]:
         """Retrieve saved articles
 
         Args:
@@ -38,7 +53,7 @@ class Pocket(object):
             Dict
 
         """
-        result = requests.get(
+        results = requests.get(
             url=self.pocket_endpoints.get,
             params={
                 "consumer_key": self._consumer_key,
@@ -47,4 +62,5 @@ class Pocket(object):
                 "detailType": "complete",
             },
         )
-        return result
+        result_list = results.json()["list"]
+        return [self._reformat_items(elem) for elem in result_list.values()]
