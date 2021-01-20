@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "pyenv"
+version = "0.0.1"
+description = ""
+authors = ["Essi Alizadeh <pypocket@ealizadeh.com>"]
+
+[[tool.poetry.source]]
+name = 'default'
+url = 'https://pypi.python.org/simple'
+secondary = true
+
+[tool.poetry.dependencies]
+python = "^3.7.1"
+requests = "^2.25.1"
+pandas = "^1.2.0"
+
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.1"
+pytest-cov = "^2.10.1"
+pre-commit = "^2.9.3"
+sphinx = "^3.4.1"
+freezegun = "^1.0.0"
+ipython = "^7.19.0"
+
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
