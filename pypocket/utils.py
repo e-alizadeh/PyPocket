@@ -1,4 +1,9 @@
 import time
+from datetime import datetime
+
+
+def convert_epoch_to_datetime(epoch: int) -> datetime:
+    return datetime.fromtimestamp(epoch)
 
 
 def convert_epoch_to_human_readable_datetime(epoch: int) -> str:
