@@ -10,8 +10,9 @@ url = 'https://pypi.python.org/simple'
 secondary = true
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = "^3.7.1"
 requests = "^2.25.1"
+pandas = "^1.2.0"
 
 
 [tool.poetry.dev-dependencies]
