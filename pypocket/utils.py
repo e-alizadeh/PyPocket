@@ -2,17 +2,19 @@ import time
 from datetime import datetime
 
 
-def convert_epoch_to_datetime(epoch: int) -> datetime:
-    return datetime.fromtimestamp(epoch)
+def convert_epoch_to_utc_datetime(epoch: int) -> datetime:
+    return datetime.utcfromtimestamp(epoch)
 
 
-def convert_epoch_to_human_readable_datetime(epoch: int) -> str:
-    """Convert epoch timestamp into human readable time
+def convert_epoch_to_human_readable_date(epoch: int) -> str:
+    """Convert epoch timestamp into a human readable date
+    Get the date (in UTC)
 
     Args:
         epoch (int):
 
     Returns:
-        str: Date and time including the day and timezone
+        Date(str):
     """
-    return time.strftime("%a, %d %b %Y %H:%M:%S %Z", time.localtime(epoch))
+    dt = convert_epoch_to_utc_datetime(epoch)
+    return dt.strftime("%a, %d %b %Y")

@@ -6,7 +6,7 @@ import pandas as pd
 import requests
 
 from pypocket.pocket_api_endpoints import PocketAPI
-from pypocket.utils import convert_epoch_to_datetime
+from pypocket.utils import convert_epoch_to_utc_datetime
 
 
 @dataclass
@@ -51,8 +51,8 @@ class Pocket(object):
             title=item["resolved_title"],
             url=item["resolved_url"],
             tags=list(item["tags"]) if "tags" in item.keys() else [],
-            time_added=convert_epoch_to_datetime(int(item["time_added"])),
-            time_updated=convert_epoch_to_datetime(int(item["time_updated"])),
+            time_added=convert_epoch_to_utc_datetime(int(item["time_added"])),
+            time_updated=convert_epoch_to_utc_datetime(int(item["time_updated"])),
         )
 
     def retrieve(self, num_post: int = 5) -> List[PocketItem]:
