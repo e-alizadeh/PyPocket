@@ -5,15 +5,8 @@ from typing import Dict, List
 import pandas as pd
 import requests
 
+from pypocket.pocket_api_endpoints import PocketAPI
 from pypocket.utils import convert_epoch_to_datetime
-
-
-@dataclass
-class PocketAPI:
-    """Class for official GetPocket API endpoints"""
-
-    api: str = "https://getpocket.com"
-    get: str = api + "/v3/get"
 
 
 @dataclass
