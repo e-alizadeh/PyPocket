@@ -9,7 +9,7 @@ on:
       - dev
       - 'feature/**'
     paths-ignore:
-      - '*.md'
+      - '**.md'
   pull_request:
       types: [opened, synchronize, reopened]
 
