@@ -1,0 +1,49 @@
+on:
+  # Trigger analysis when pushing in master or pull requests, and when creating
+  # a pull request.
+  push:
+    branches:
+      - master
+      - dev
+      - 'feature/**'
+    paths-ignore:
+      - '*.md'
+  pull_request:
+      types: [opened, synchronize, reopened]
+
+name: Main Workflow
+jobs:
+  run_tests:
+    name: Setup environment & Run pytest
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
+
+    steps:
+      - name: 📥 Checkout repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Disabling shallow clone is recommended for improving relevancy of reporting
+
+      - name: 🟢 Create Conda environment
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: pypocket
+          environment-file: dev-env.yaml
+          auto-activate-base: false
+
+      - name: 🐍 Setup Poetry
+        run: curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
+
+      - name: ⚙ Install PyPi packages via Poetry
+        run: poetry install
+
+      - name: 🧐 Run pytest
+        run: pytest --cov-report xml:coverage.xml
+
+      - name: ☁ SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
