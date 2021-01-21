@@ -31,3 +31,8 @@ p =  Pocket(
 )
 p.to_html(num_post=10)
 ```
+
+
+## New features in the pipeline
+- Retrieve pocket contents according to given tags
+- Modify the pocket contents properties
