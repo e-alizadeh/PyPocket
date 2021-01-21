@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "pyenv"
+name = "pypocket"
 version = "0.0.1"
-description = ""
+description = "A Python wrapper for GetPocket"
 authors = ["Essi Alizadeh <pypocket@ealizadeh.com>"]
 
 [[tool.poetry.source]]
