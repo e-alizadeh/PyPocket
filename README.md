@@ -6,7 +6,7 @@
 [![PyPI version](https://badge.fury.io/py/pypocket.svg)](https://badge.fury.io/py/pypocket)
 ![MIT License](https://img.shields.io/badge/License-MIT-blueviolet)
 [![Code Style: Black](https://img.shields.io/badge/Code%20style-black-black)](https://github.com/psf/black)
-
+ 
 
 ---
 [![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-white.svg)](https://sonarcloud.io/dashboard?id=PyPocket)
