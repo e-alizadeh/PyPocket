@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/badge/Project%20Status-Under%20Development-green)
 
-[![Actions Status](https://github.com/e-alizadeh/pypocket/workflows/Build%20and%20Test/badge.svg)](https://github.com/e-alizadeh/pypocket/actions)
+[![Actions Status](https://github.com/e-alizadeh/pypocket/workflows/Build%20and%20Test/badge.svg?feature=master)](https://github.com/e-alizadeh/pypocket/actions)
 
 ![](https://github.com/e-alizadeh/pypocket/workflows/Main%20Workflow/badge.svg?branch=master)
 [![PyPI version](https://badge.fury.io/py/pypocket.svg)](https://badge.fury.io/py/pypocket)
