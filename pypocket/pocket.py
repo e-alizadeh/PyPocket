@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from datetime import datetime
-from typing import List
+from typing import Dict, List
 
 import pandas as pd
 import requests
@@ -12,11 +12,12 @@ from pypocket.utils import convert_epoch_to_datetime
 class PocketAPI:
     """Class for official GetPocket API endpoints"""
 
-    get: str = "https://getpocket.com/v3/get"
+    api: str = "https://getpocket.com"
+    get: str = api + "/v3/get"
 
 
 @dataclass
-class PocketArticle:
+class PocketItem:
     """Class for official GetPocket API endpoints"""
 
     item_id: int
@@ -43,17 +44,25 @@ class Pocket(object):
         )
 
     @staticmethod
-    def _reformat_items(item):
-        return PocketArticle(
+    def _reformat_items(item: Dict[str, str]) -> PocketItem:
+        """Convert a Pocket item data structure from dictionary to custom data structure PocketItem
+
+        Args:
+            item (Dict[str, str]): The content of a pocket item
+
+        Returns:
+            PocketItem
+        """
+        return PocketItem(
             item_id=int(item["item_id"]),
             title=item["resolved_title"],
             url=item["resolved_url"],
-            tags=[],
+            tags=list(item["tags"]) if "tags" in item.keys() else [],
             time_added=convert_epoch_to_datetime(int(item["time_added"])),
             time_updated=convert_epoch_to_datetime(int(item["time_updated"])),
         )
 
-    def retrieve(self, num_post: int = 5) -> List[PocketArticle]:
+    def retrieve(self, num_post: int = 5) -> List[PocketItem]:
         """Retrieve saved articles
 
         Args:
@@ -75,8 +84,8 @@ class Pocket(object):
         result_list = results.json()["list"]
         return [self._reformat_items(elem) for elem in result_list.values()]
 
-    def to_html(self):
-        results_df = pd.DataFrame(data=self.retrieve())
+    def to_html(self, num_post: int = 5) -> None:
+        results_df = pd.DataFrame(data=self.retrieve(num_post))
         with open(f"./{self.html_output_filename}", "w", encoding="utf-8") as f:
             f.write(
                 results_df.to_html(render_links=True, justify="center").replace(
