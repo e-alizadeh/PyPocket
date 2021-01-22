@@ -40,6 +40,8 @@ p =  Pocket(
 p.to_html(num_post=10)
 ```
 
+Check the development roadmap for this project [here](https://github.com/e-alizadeh/PyPocket/projects/1)
+
 
 ## New features in the pipeline
 - Retrieve pocket contents according to given tags
