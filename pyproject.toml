@@ -1,8 +1,14 @@
 [tool.poetry]
 name = "pypocket"
-version = "0.0.1"
+version = "v0.0.1"
 description = "A Python wrapper for GetPocket"
 authors = ["Essi Alizadeh <pypocket@ealizadeh.com>"]
+keywords = ["GetPocket", "pocket", "wrapper"]
+readme = "README.md"
+license = "MIT"
+homepage = "https://github.com/e-alizadeh/PyPocket"
+repository = "https://github.com/e-alizadeh/PyPocket"
+
 
 [[tool.poetry.source]]
 name = 'default'
