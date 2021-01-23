@@ -206,12 +206,12 @@ url = "https://pypi.python.org/simple"
 reference = 'default'
 
 [[package]]
-name = "filelock"
-version = "3.0.12"
-description = "A platform independent file lock."
-category = "dev"
+name = "dominate"
+version = "2.6.0"
+description = "Dominate is a Python library for creating and manipulating HTML documents using an elegant DOM API."
+category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 
 [package.source]
 type = "legacy"
@@ -219,15 +219,12 @@ url = "https://pypi.python.org/simple"
 reference = 'default'
 
 [[package]]
-name = "freezegun"
-version = "1.0.0"
-description = "Let your Python tests travel through time"
+name = "filelock"
+version = "3.0.12"
+description = "A platform independent file lock."
 category = "dev"
 optional = false
-python-versions = ">=3.5"
-
-[package.dependencies]
-python-dateutil = ">=2.7"
+python-versions = "*"
 
 [package.source]
 type = "legacy"
@@ -1024,7 +1021,7 @@ reference = 'default'
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7.1"
-content-hash = "9278473e08ce02bd2165634b18512ed78ccbf18e81e132b77236d6109980b7f4"
+content-hash = "090a86bbbbeb163e413a8d11491f83a40b1932ff7333fe109e9c8bc7ae15e9de"
 
 [metadata.files]
 alabaster = [
@@ -1134,13 +1131,13 @@ docutils = [
     {file = "docutils-0.16-py2.py3-none-any.whl", hash = "sha256:0c5b78adfbf7762415433f5515cd5c9e762339e23369dbe8000d84a4bf4ab3af"},
     {file = "docutils-0.16.tar.gz", hash = "sha256:c2de3a60e9e7d07be26b7f2b00ca0309c207e06c100f9cc2a94931fc75a478fc"},
 ]
+dominate = [
+    {file = "dominate-2.6.0-py2.py3-none-any.whl", hash = "sha256:84b5f71ed30021193cb0faa45d7776e1083f392cfe67a49f44e98cb2ed76c036"},
+    {file = "dominate-2.6.0.tar.gz", hash = "sha256:76ec2cde23700a6fc4fee098168b9dee43b99c2f1dd0ca6a711f683e8eb7e1e4"},
+]
 filelock = [
     {file = "filelock-3.0.12-py3-none-any.whl", hash = "sha256:929b7d63ec5b7d6b71b0fa5ac14e030b3f70b75747cef1b10da9b879fef15836"},
     {file = "filelock-3.0.12.tar.gz", hash = "sha256:18d82244ee114f543149c66a6e0c14e9c4f8a1044b5cdaadd0f82159d6a6ff59"},
-]
-freezegun = [
-    {file = "freezegun-1.0.0-py2.py3-none-any.whl", hash = "sha256:02b35de52f4699a78f6ac4518e4cd3390dddc43b0aeb978335a8f270a2d9668b"},
-    {file = "freezegun-1.0.0.tar.gz", hash = "sha256:1cf08e441f913ff5e59b19cc065a8faa9dd1ddc442eaf0375294f344581a0643"},
 ]
 identify = [
     {file = "identify-1.5.13-py2.py3-none-any.whl", hash = "sha256:9dfb63a2e871b807e3ba62f029813552a24b5289504f5b071dea9b041aee9fe4"},
