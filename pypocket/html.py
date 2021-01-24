@@ -3,7 +3,7 @@ from typing import List
 import dominate
 from dominate import tags
 
-from pypocket.pocket import PocketItem
+from pypocket.pocket_dataclass import PocketItem
 
 
 class HTML:

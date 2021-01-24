@@ -1,37 +1,11 @@
-from dataclasses import dataclass
-from datetime import datetime
 from typing import Dict, List
 
-import pandas as pd
 import requests
 
+from pypocket.html import HTML
 from pypocket.pocket_api_endpoints import PocketAPI
+from pypocket.pocket_dataclass import PocketItem
 from pypocket.utils import convert_epoch_to_utc_datetime
-
-
-@dataclass
-class PocketItem:
-    """Class for official GetPocket API endpoints"""
-
-    item_id: int
-    title: str
-    url: str
-    tags: List[str]
-    time_added: datetime
-    time_updated: datetime
-
-    @staticmethod
-    def convert_datetime_to_string(dt: datetime) -> str:
-        """Convert datetime into a human readable date string
-        Get the date (in UTC)
-
-        Args:
-            dt (datetime):
-
-        Returns:
-            Date (str):
-        """
-        return dt.strftime("%a, %d %b %Y")
 
 
 class Pocket(object):
@@ -41,6 +15,8 @@ class Pocket(object):
         self._consumer_key = consumer_key
         self._access_token = access_token
         self.pocket_endpoints = PocketAPI
+
+        self.html_document = HTML()
 
         # Handle both scenarios where the html_filename has either .html extension or not.
         self.html_output_filename = (
@@ -91,11 +67,9 @@ class Pocket(object):
         return [self._reformat_items(elem) for elem in result_list.values()]
 
     def to_html(self, num_post: int = 5) -> None:
-        results_df = pd.DataFrame(data=self.retrieve(num_post))
         with open(f"./{self.html_output_filename}", "w", encoding="utf-8") as f:
             f.write(
-                results_df.to_html(render_links=True, justify="center").replace(
-                    '<table border="1" class="dataframe">',
-                    '<table class="table table-striped">',
-                )  # use bootstrap styling
+                self.html_document.get_html_str(
+                    list_pocket_items=self.retrieve(num_post)
+                )
             )
