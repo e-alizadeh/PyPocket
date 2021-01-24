@@ -20,6 +20,19 @@ class PocketItem:
     time_added: datetime
     time_updated: datetime
 
+    @staticmethod
+    def convert_datetime_to_string(dt: datetime) -> str:
+        """Convert datetime into a human readable date string
+        Get the date (in UTC)
+
+        Args:
+            dt (datetime):
+
+        Returns:
+            Date (str):
+        """
+        return dt.strftime("%a, %d %b %Y")
+
 
 class Pocket(object):
     def __init__(
