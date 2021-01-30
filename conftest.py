@@ -63,7 +63,7 @@ def sample_response() -> Dict[str, Any]:
 
 
 # @pytest.fixture()
-def expected_list_pocket_items() -> List[PocketItem]:
+def sample_list_pocket_items() -> List[PocketItem]:
     return [
         PocketItem(
             item_id=123,

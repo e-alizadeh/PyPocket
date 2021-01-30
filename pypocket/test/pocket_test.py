@@ -1,7 +1,7 @@
 from unittest import TestCase
 from unittest.mock import patch
 
-from conftest import expected_list_pocket_items, sample_response
+from conftest import sample_list_pocket_items, sample_response
 from pypocket.pocket import Pocket
 
 
@@ -22,4 +22,4 @@ class TestPocket(TestCase):
         item = DerivedPocket()
         retrieve_results = item.retrieve()
 
-        assert retrieve_results == expected_list_pocket_items()
+        assert retrieve_results == sample_list_pocket_items()
