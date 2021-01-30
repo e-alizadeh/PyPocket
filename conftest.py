@@ -1,12 +1,11 @@
-from typing import Any, Dict, List, Tuple
-from unittest import TestCase
-from unittest.mock import patch
+from typing import Any, Dict, List
 
-from pypocket.pocket import Pocket, PocketItem
+from pypocket.pocket_dataclass import PocketItem
 from pypocket.utils import convert_epoch_to_utc_datetime
 
 
-def fake_data() -> Tuple[Dict[str, Any], List[PocketItem]]:
+# @pytest.fixture()
+def sample_response() -> Dict[str, Any]:
     fake_response_get = {
         "123": {
             "item_id": "123",
@@ -60,7 +59,12 @@ def fake_data() -> Tuple[Dict[str, Any], List[PocketItem]]:
         },
     }
 
-    expected_results = [
+    return fake_response_get
+
+
+# @pytest.fixture()
+def expected_list_pocket_items() -> List[PocketItem]:
+    return [
         PocketItem(
             item_id=123,
             title="This is the title of post 1",
@@ -78,28 +82,3 @@ def fake_data() -> Tuple[Dict[str, Any], List[PocketItem]]:
             time_updated=convert_epoch_to_utc_datetime(1611205801),
         ),
     ]
-
-    return fake_response_get, expected_results
-
-
-class DerivedPocket(Pocket):
-    def __init__(self, customer_key="xyz", access_token="abc"):
-        super().__init__(customer_key, access_token)
-
-
-class MockResponse:
-    @staticmethod
-    def json():
-        sample_response, _ = fake_data()
-        return {"list": sample_response}
-
-
-class TestPocket(TestCase):
-    @patch("pypocket.pocket.requests.get", return_value=MockResponse())
-    def test_retrieve(self, mock_get):
-        item = DerivedPocket()
-        retrieve_results = item.retrieve()
-
-        _, expected_results = fake_data()
-
-        assert retrieve_results == expected_results
