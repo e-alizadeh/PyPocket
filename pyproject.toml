@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "pypocket"
-version = "v0.0.1"
+version = "v0.1.0"
 description = "A Python wrapper for GetPocket"
 authors = ["Essi Alizadeh <pypocket@ealizadeh.com>"]
 keywords = ["GetPocket", "pocket", "wrapper"]
