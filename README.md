@@ -27,6 +27,10 @@ A Python Package for GetPocket (https://getpocket.com)
 pip install pypocket
 ```
 
+## Requirements
+- requests
+- dominate
+
 ## Usage
 ```python
 from pypocket import Pocket
