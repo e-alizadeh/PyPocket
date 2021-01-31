@@ -18,7 +18,6 @@
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=PyPocket&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=PyPocket)
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=PyPocket&metric=ncloc)](https://sonarcloud.io/dashboard?id=PyPocket)
 ---
-[comment]: <> ([![SonarCloud]&#40;https://sonarcloud.io/images/project_badges/sonarcloud-white.svg&#41;]&#40;https://sonarcloud.io/dashboard?id=e-alizadeh_PyPocket&#41;)
 
 A Python Package for GetPocket (https://getpocket.com)
 
@@ -39,6 +38,8 @@ p =  Pocket(
 )
 p.to_html(num_post=10)
 ```
+
+Check the development roadmap for this project [here](https://github.com/e-alizadeh/PyPocket/projects/1)
 
 
 ## New features in the pipeline
