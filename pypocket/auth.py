@@ -21,7 +21,7 @@ class Auth:
         """
         param = {
             "consumer_key": self.consumer_key,
-            "redirect_uri": "http://www.google.com",
+            "redirect_uri": "https://www.google.com",
         }  # Set POST fields here
         req = requests.get(self.endpoints.oauth_request, param)
         if req.status_code == 200:
