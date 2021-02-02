@@ -1,6 +1,6 @@
 All release changes will be documented in this file. 
 
-## [v0.2.0] - 2021-01-31
+## [v0.2.0] - 2021-02-01
 ### Added
 - Auth class to get access token
 
