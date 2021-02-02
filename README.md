@@ -27,11 +27,33 @@ A Python Package for GetPocket (https://getpocket.com)
 pip install pypocket
 ```
 
-## Requirements
+## Library Requirements
 - requests
 - dominate
 
+---
+## Prerequisite: Obtain Your Consumer Key & Access Token
+In order to use PyPocket, you will need consumer_key and access_token for your Pocket. 
+For the consumer_key, you can follow Step 1 of [Pocket Authentication API Documentation](https://getpocket.com/developer/docs/authentication)
+to obtain your consumer_key. 
+
+For obtaining your access_token, you can either follow the pocket documentation (above link) to get your access_token,
+or use the `Auth` class available in this library for your convenience as below. 
+```python
+from pypocket.auth import Auth
+auth = Auth(consumer_key="your_consumer_key")
+# The following will automatically obtain a request_token and ask you to authorize it. 
+auth.authorize_request_token_browser() 
+```
+
+The `auth.authorize_request_token_browser()` will open a webpage to getpocket.com website asking  you to authorize the token. 
+Once, you authorize it. Then you can get your access token by running the following:
+```python
+access_token = auth.get_access_token() 
+```
+---
 ## Usage
+
 ```python
 from pypocket import Pocket
 
@@ -42,6 +64,7 @@ p =  Pocket(
 )
 p.to_html(num_post=10)
 ```
+---
 
 Check the development roadmap for this project [here](https://github.com/e-alizadeh/PyPocket/projects/1)
 
