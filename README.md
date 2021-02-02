@@ -28,8 +28,8 @@ pip install pypocket
 ```
 
 ## Library Requirements
-- requests
-- dominate
+- requests (`pip install requests`)
+- dominate (`pip install dominate`)
 
 ---
 ## Prerequisite: Obtain Your Consumer Key & Access Token
