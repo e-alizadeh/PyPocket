@@ -19,7 +19,14 @@
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=PyPocket&metric=ncloc)](https://sonarcloud.io/dashboard?id=PyPocket)
 ---
 
-A Python Package for GetPocket (https://getpocket.com)
+A Python Package for GetPocket (https://getpocket.com). 
+The Export option in Pocket will generate a dry html file containing only the saved article links. 
+PyPocket library will generate a more sophisticated HTML report with given tags, the article title, time added. 
+You can specify the number of articles you want to retrieve too (particularly useful if you have a large collection of saved articles).
+
+More functionalies are under development like the ability to filter and export by tag(s), additional metadata, *etc*. 
+
+Check the development roadmap for this project [here](https://github.com/e-alizadeh/PyPocket/projects/1). Feel free to request a new feature!
 
 
 ## Installation
@@ -65,8 +72,6 @@ p =  Pocket(
 p.to_html(num_post=10)
 ```
 ---
-
-Check the development roadmap for this project [here](https://github.com/e-alizadeh/PyPocket/projects/1)
 
 
 ## New features in the pipeline
