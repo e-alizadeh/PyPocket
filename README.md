@@ -19,7 +19,7 @@
 [![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=PyPocket&metric=ncloc)](https://sonarcloud.io/dashboard?id=PyPocket)
 ---
 
-A Python Package for GetPocket (https://getpocket.com). 
+PyPocket is a Python wrapper for GetPocket (https://getpocket.com). 
 The Export option in Pocket will generate a dry html file containing only the saved article links. 
 PyPocket library will generate a more sophisticated HTML report with given tags, the article title, time added. 
 You can specify the number of articles you want to retrieve too (particularly useful if you have a large collection of saved articles).
